@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0A1628;
+  --navy-light: #1a2942;
+  --gold: #F59E0B;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-gray-900;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-navy {
+    background-color: #0A1628;
+  }
+
+  .bg-navy-light {
+    background-color: #1a2942;
+  }
+
+  .text-navy {
+    color: #0A1628;
+  }
+
+  .text-gold {
+    color: #F59E0B;
+  }
+
+  .bg-gold {
+    background-color: #F59E0B;
+  }
+
+  .border-navy-light {
+    border-color: #1a2942;
+  }
+
+  .border-gold {
+    border-color: #F59E0B;
+  }
+
+  .ring-gold {
+    --tw-ring-color: #F59E0B;
+  }
+
+  .focus\:ring-gold\/50:focus {
+    --tw-ring-color: rgb(245 158 11 / 0.5);
+  }
+
+  .focus\:border-gold:focus {
+    border-color: #F59E0B;
+  }
+
+  .hover\:border-gold\/50:hover {
+    border-color: rgb(245 158 11 / 0.5);
+  }
+
+  .bg-gold\/10 {
+    background-color: rgb(245 158 11 / 0.1);
+  }
+
+  .bg-gold\/20 {
+    background-color: rgb(245 158 11 / 0.2);
+  }
+
+  .text-gold {
+    color: #F59E0B;
+  }
+
+  .prose-treasury {
+    @apply prose prose-gray max-w-none;
+  }
+
+  .prose-treasury h2 {
+    @apply text-navy border-b border-gray-100 pb-2;
+  }
+
+  .prose-treasury a {
+    @apply text-gold hover:text-amber-600;
+  }
+}
+
+/* Article body markdown styles */
+.article-body h1 { @apply text-3xl font-bold text-navy mb-4 mt-8; }
+.article-body h2 { @apply text-2xl font-semibold text-navy mb-3 mt-6; }
+.article-body h3 { @apply text-xl font-semibold text-gray-800 mb-2 mt-5; }
+.article-body p { @apply text-gray-700 leading-relaxed mb-4; }
+.article-body ul { @apply list-disc list-inside mb-4 space-y-1; }
+.article-body ol { @apply list-decimal list-inside mb-4 space-y-1; }
+.article-body li { @apply text-gray-700; }
+.article-body strong { @apply font-semibold text-gray-900; }
+.article-body em { @apply italic; }
+.article-body blockquote { @apply border-l-4 border-gold pl-4 py-1 my-4 bg-amber-50 text-gray-700 italic rounded-r; }
+.article-body code { @apply bg-gray-100 text-navy px-1.5 py-0.5 rounded text-sm font-mono; }
+.article-body pre { @apply bg-gray-100 p-4 rounded-lg overflow-x-auto mb-4; }
+.article-body table { @apply w-full border-collapse mb-4; }
+.article-body th { @apply bg-navy text-white px-4 py-2 text-left text-sm; }
+.article-body td { @apply border border-gray-200 px-4 py-2 text-sm; }
+.article-body a { @apply text-gold underline hover:text-amber-600; }
+.article-body hr { @apply border-gray-200 my-8; }

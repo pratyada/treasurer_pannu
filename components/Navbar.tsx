@@ -1,0 +1,115 @@
+"use client";
+
+import Link from "next/link";
+import { useSession, signOut } from "next-auth/react";
+import { useState } from "react";
+
+export default function Navbar() {
+  const { data: session } = useSession();
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  return (
+    <nav className="bg-navy border-b border-navy-light sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-gold rounded-sm flex items-center justify-center">
+              <span className="text-navy font-bold text-sm">TP</span>
+            </div>
+            <div className="hidden sm:block">
+              <span className="text-white font-bold text-lg tracking-tight">
+                TreasuryPulse
+              </span>
+              <span className="text-gold font-bold text-lg tracking-tight"> India</span>
+            </div>
+          </Link>
+
+          {/* Desktop Nav Links */}
+          <div className="hidden md:flex items-center gap-6">
+            <Link
+              href="/news"
+              className="text-gray-300 hover:text-gold transition-colors text-sm font-medium"
+            >
+              Daily News
+            </Link>
+            <Link
+              href="/insider"
+              className="text-gray-300 hover:text-gold transition-colors text-sm font-medium"
+            >
+              Insider
+            </Link>
+            <Link
+              href="/jobs"
+              className="text-gray-300 hover:text-gold transition-colors text-sm font-medium"
+            >
+              Jobs
+            </Link>
+            <Link
+              href="/about"
+              className="text-gray-300 hover:text-gold transition-colors text-sm font-medium"
+            >
+              About
+            </Link>
+          </div>
+
+          {/* CTA + Auth */}
+          <div className="hidden md:flex items-center gap-3">
+            {session?.user ? (
+              <>
+                {(session.user as { role?: string }).role === "admin" && (
+                  <Link
+                    href="/admin"
+                    className="text-gold text-sm font-medium hover:underline"
+                  >
+                    Admin Panel
+                  </Link>
+                )}
+                <button
+                  onClick={() => signOut({ callbackUrl: "/" })}
+                  className="text-gray-400 hover:text-white text-sm transition-colors"
+                >
+                  Sign Out
+                </button>
+              </>
+            ) : (
+              <Link
+                href="/subscribe"
+                className="bg-gold text-navy px-4 py-2 rounded-md text-sm font-semibold hover:bg-amber-400 transition-colors"
+              >
+                Subscribe — ₹50/mo
+              </Link>
+            )}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden text-gray-300 hover:text-white"
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {mobileOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {mobileOpen && (
+          <div className="md:hidden border-t border-navy-light py-4 space-y-3">
+            <Link href="/news" className="block text-gray-300 hover:text-gold py-1 text-sm">Daily News</Link>
+            <Link href="/insider" className="block text-gray-300 hover:text-gold py-1 text-sm">Insider</Link>
+            <Link href="/jobs" className="block text-gray-300 hover:text-gold py-1 text-sm">Jobs</Link>
+            <Link href="/about" className="block text-gray-300 hover:text-gold py-1 text-sm">About</Link>
+            <Link href="/subscribe" className="block bg-gold text-navy px-4 py-2 rounded-md text-sm font-semibold text-center">
+              Subscribe — ₹50/mo
+            </Link>
+          </div>
+        )}
+      </div>
+    </nav>
+  );
+}
