@@ -37,6 +37,7 @@ export default function SubscribersPage() {
   const totalPaid = subscribers.filter((s) => s.plan === "paid").length;
   const totalRevenue = totalPaid * 50;
   const activeCount = subscribers.filter((s) => s.status === "active").length;
+  void activeCount; // used in future stats display
 
   return (
     <div>
