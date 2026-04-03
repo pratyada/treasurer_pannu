@@ -1,171 +1,169 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "About Pranav | TreasuryPulse India",
-  description: "Learn about Pranav, the Finance & Treasury leader behind TreasuryPulse India.",
+  title: "About Pranav Chudgar, CFA | TreasuryPulse India",
+  description:
+    "Pranav Chudgar, CFA — Director of Global Treasury at McKinsey & Company. 20+ years in treasury across India, Africa, Southeast Asia and Europe. Founder of TreasuryPulse India.",
 };
 
-const expertise = [
-  "RBI Monetary Policy & Open Market Operations",
-  "Government Securities (G-Sec) Markets",
-  "Forex & Currency Risk Management",
-  "Liquidity Management & ALM",
-  "Money Markets (Call Money, CBLO, Repo)",
-  "Commercial Paper & Certificate of Deposits",
-  "Interest Rate Derivatives",
-  "Trade Finance & LC Operations",
-  "Treasury Technology & Automation",
-  "SEBI Regulations & Compliance",
-];
-
-const milestones = [
-  { year: "2009", label: "Started treasury career at a leading PSU Bank" },
-  { year: "2013", label: "Moved to private sector — led G-Sec desk" },
-  { year: "2017", label: "Joined a top-tier corporate treasury team" },
-  { year: "2020", label: "Head of Treasury — Fortune 500 India subsidiary" },
-  { year: "2024", label: "Founded TreasuryPulse India to give back to the community" },
+const timeline = [
+  { year: "2024–Now", role: "Director — Global Treasury", company: "McKinsey & Company", detail: "Leading global treasury strategy and transformation across markets." },
+  { year: "2022–2024", role: "Lead — Group Treasury", company: "Motherson Group", detail: "Raised ~€1.7B in financing. Managed FX & interest rate risk globally." },
+  { year: "2015–2022", role: "Director, FSRM & Treasury Trainer", company: "EY (Ernst & Young)", detail: "Advised corporates on treasury transformation. Trained 1,500+ professionals." },
+  { year: "2011–2015", role: "Group Treasury", company: "Bharti Airtel", detail: "Managed ~$4B FX exposure across 20 countries. Set up Africa treasury desks." },
+  { year: "2008–2010", role: "FX & Derivatives Sales", company: "ICICI Bank", detail: "FX risk management advisory for large Indian corporates." },
+  { year: "2005–2008", role: "Group Treasury", company: "Adani Group", detail: "Foundational treasury and commodity trading experience." },
 ];
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-white">
+
       {/* Hero */}
-      <div className="bg-navy">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="flex flex-col md:flex-row items-center gap-8">
-            <div className="flex-shrink-0">
-              <div className="w-36 h-36 bg-gold/20 border-4 border-gold/30 rounded-full flex items-center justify-center text-gold font-bold text-5xl">
-                P
-              </div>
-            </div>
-            <div>
-              <p className="text-gold text-xs font-semibold uppercase tracking-widest mb-2">About</p>
-              <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">Pranav</h1>
-              <p className="text-gold/80 font-medium mb-3">Finance & Treasury Leader · Founder, TreasuryPulse India</p>
-              <p className="text-gray-300 text-sm leading-relaxed max-w-xl">
-                15+ years navigating India&apos;s complex treasury landscape — from PSU banks to corporate treasuries.
-                Now sharing everything he knows to help the next generation of treasury professionals skip the learning curve.
-              </p>
-            </div>
+      <section className="bg-navy py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="w-28 h-28 bg-gold/20 border-4 border-gold/40 rounded-full flex items-center justify-center mx-auto mb-6">
+            <span className="text-gold font-bold text-5xl">P</span>
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-bold text-white mb-3">
+            Pranav Chudgar, <span className="text-gold">CFA</span>
+          </h1>
+          <p className="text-gold font-medium text-lg mb-2">Director — Global Treasury, McKinsey & Company</p>
+          <p className="text-gray-400 mb-8">Delhi, India &nbsp;·&nbsp; 20+ Years in Treasury &nbsp;·&nbsp; India · Africa · Southeast Asia · Europe</p>
+          <div className="flex flex-wrap gap-3 justify-center">
+            <a
+              href="https://www.linkedin.com/in/pranavchudgar/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-[#0077B5] text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-[#006097] transition-colors"
+            >
+              Follow on LinkedIn
+            </a>
+            <Link href="/subscribe" className="bg-gold text-navy px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-amber-400 transition-colors">
+              Subscribe to TreasuryPulse
+            </Link>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Main content */}
-          <div className="lg:col-span-2 space-y-10">
-            {/* Story */}
-            <div>
-              <h2 className="text-navy font-bold text-2xl mb-4">The Story Behind TreasuryPulse India</h2>
-              <div className="space-y-4 text-gray-600 text-sm leading-relaxed">
-                <p>
-                  When I started my treasury career in 2009, there was almost no resource specifically designed for junior treasury professionals in India.
-                  Financial news existed, but nothing that explained the <em>why</em> behind RBI decisions, or how G-Sec movements actually affect corporate treasury operations.
-                </p>
-                <p>
-                  I spent years learning through experience, mentors, and expensive mistakes. I read everything — from RBI Annual Reports to SEBI circulars — and slowly built a mental model of how India&apos;s money markets work.
-                </p>
-                <p>
-                  In 2024, I decided to package 15 years of knowledge into something accessible. TreasuryPulse India is my answer to the question I&apos;d have asked in 2009:
-                  <strong className="text-navy"> &quot;Where can I learn treasury the way a practitioner thinks about it?&quot;</strong>
-                </p>
-                <p>
-                  Every article I write or curate is filtered through one question: <em>&quot;Would this have helped me when I was starting out?&quot;</em> If yes, it goes in. If it&apos;s just noise, it doesn&apos;t.
-                </p>
+      {/* Stats */}
+      <section className="bg-gold/5 border-y border-gold/20 py-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 text-center">
+            {[
+              { value: "20+", label: "Years in Treasury" },
+              { value: "€1.7B", label: "Financing Raised" },
+              { value: "$4B", label: "FX Exposure Managed" },
+              { value: "1,500+", label: "Professionals Trained" },
+              { value: "20", label: "Countries" },
+              { value: "CFA", label: "Charterholder" },
+            ].map((s) => (
+              <div key={s.label}>
+                <div className="text-navy font-bold text-2xl">{s.value}</div>
+                <div className="text-gray-500 text-xs mt-1">{s.label}</div>
               </div>
-            </div>
-
-            {/* What you'll get */}
-            <div>
-              <h2 className="text-navy font-bold text-2xl mb-4">What TreasuryPulse India Gives You</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  { icon: "📰", title: "Daily Curated News", desc: "Not just headlines — context for why each development matters to treasury." },
-                  { icon: "🔍", title: "RBI/SEBI Decoded", desc: "Policy circulars translated into plain language with treasury implications." },
-                  { icon: "🧠", title: "Mental Models", desc: "Frameworks I use to think about markets, liquidity, and interest rates." },
-                  { icon: "💼", title: "Career Intelligence", desc: "How to grow fast in a treasury career — what I wish someone had told me." },
-                ].map((item) => (
-                  <div key={item.title} className="bg-gray-50 rounded-xl p-5">
-                    <div className="text-2xl mb-2">{item.icon}</div>
-                    <h3 className="text-navy font-semibold text-sm mb-1">{item.title}</h3>
-                    <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Timeline */}
-            <div>
-              <h2 className="text-navy font-bold text-2xl mb-6">Career Timeline</h2>
-              <div className="space-y-4">
-                {milestones.map((m) => (
-                  <div key={m.year} className="flex gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-navy rounded-xl flex items-center justify-center text-gold font-bold text-xs">
-                      {m.year}
-                    </div>
-                    <div className="flex-1 flex items-center">
-                      <p className="text-gray-700 text-sm">{m.label}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Sidebar */}
-          <div className="space-y-6">
-            {/* Expertise */}
-            <div className="bg-gray-50 rounded-2xl p-6">
-              <h3 className="text-navy font-bold text-sm mb-4 uppercase tracking-wide">Areas of Expertise</h3>
-              <ul className="space-y-2">
-                {expertise.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-xs text-gray-600">
-                    <span className="text-gold mt-0.5">◆</span>
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Connect */}
-            <div className="bg-navy rounded-2xl p-6">
-              <h3 className="text-white font-bold text-sm mb-3">Connect with Pranav</h3>
-              <p className="text-gray-400 text-xs mb-4 leading-relaxed">
-                Questions, article suggestions, or just want to connect with a fellow treasury professional?
-              </p>
-              <a
-                href="mailto:pranav@treasurypulse.in"
-                className="block text-center bg-gold text-navy text-xs font-bold px-4 py-2.5 rounded-lg hover:bg-amber-400 transition-colors"
-              >
-                Email Pranav
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-center bg-white/10 text-white text-xs font-medium px-4 py-2.5 rounded-lg hover:bg-white/20 transition-colors mt-2"
-              >
-                LinkedIn Profile
-              </a>
-            </div>
-
-            {/* Subscribe CTA */}
-            <div className="bg-gold/10 border border-gold/30 rounded-2xl p-6 text-center">
-              <p className="text-navy font-bold text-sm mb-2">Get Pranav&apos;s Daily Insights</p>
-              <p className="text-gray-600 text-xs mb-4">
-                Subscribe to read everything Pranav writes — for ₹50/month.
-              </p>
-              <Link
-                href="/subscribe"
-                className="block bg-navy text-white text-xs font-bold px-4 py-2.5 rounded-lg hover:bg-navy/80 transition-colors"
-              >
-                Subscribe — ₹50/month
-              </Link>
-            </div>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* About */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 className="text-navy font-bold text-3xl mb-6">About Pranav</h2>
+        <div className="prose prose-lg text-gray-600 space-y-5">
+          <p>
+            Pranav Chudgar is one of India&apos;s most experienced treasury professionals, currently serving as
+            <strong> Director — Global Treasury at McKinsey &amp; Company</strong> in Delhi. With over 20 years of
+            multifunctional treasury experience spanning corporate, consulting, and banking roles, Pranav has
+            worked in financial markets across India, Southeast Asia, Africa, and Europe.
+          </p>
+          <p>
+            At <strong>Motherson Group</strong>, Pranav led one of the most complex treasury mandates in Indian
+            corporate history — raising approximately <strong>€1.7 billion</strong> in financing through credit
+            facilities and bonds, managing group-wide FX and interest rate risks, and cultivating relationships
+            with over 20 global banks and 6 credit rating agencies.
+          </p>
+          <p>
+            At <strong>Bharti Airtel</strong>, he managed multi-currency foreign exchange exposure of approximately
+            <strong> $4 billion</strong> across 20 countries and was instrumental in setting up regional treasury
+            desks across Africa — one of the most ambitious treasury expansions by an Indian company.
+          </p>
+          <p>
+            During his seven years at <strong>EY</strong>, Pranav advised India&apos;s top corporates on treasury
+            transformation, FX hedging, liquidity management, and digital payments. He also led EY&apos;s treasury
+            training vertical — developing curriculum and training over <strong>1,500 finance professionals</strong>
+            across India.
+          </p>
+          <p>
+            Pranav began his career at <strong>ICICI Bank</strong> and <strong>Adani Group</strong>, gaining deep
+            foundational experience in FX derivatives sales, commodity treasury, and corporate risk management.
+          </p>
+        </div>
+      </section>
+
+      {/* Career Timeline */}
+      <section className="bg-gray-50 py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-navy font-bold text-3xl mb-10 text-center">Career Timeline</h2>
+          <div className="relative border-l-2 border-gold/30 pl-8 space-y-8">
+            {timeline.map((item, i) => (
+              <div key={i} className="relative">
+                <div className="absolute -left-10 top-1 w-4 h-4 bg-gold rounded-full border-4 border-white shadow" />
+                <p className="text-gold text-xs font-bold uppercase tracking-wide mb-1">{item.year}</p>
+                <h3 className="text-navy font-semibold text-lg leading-snug">{item.role}</h3>
+                <p className="text-gray-600 font-medium text-sm">{item.company}</p>
+                <p className="text-gray-500 text-sm mt-1">{item.detail}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Education */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <h2 className="text-navy font-bold text-3xl mb-8">Education & Credentials</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {[
+            { degree: "CFA Charterholder", inst: "CFA Institute", year: "Global Designation" },
+            { degree: "MS Finance", inst: "ICFAI", year: "2003 – 2005" },
+            { degree: "LLB", inst: "Gujarat University", year: "2003 – 2005" },
+            { degree: "B.Com (Accountancy)", inst: "Gujarat University", year: "2000 – 2003" },
+          ].map((e) => (
+            <div key={e.degree} className="flex gap-4 bg-gray-50 rounded-xl p-5 border border-gray-100">
+              <div className="w-10 h-10 bg-navy rounded-lg flex items-center justify-center flex-shrink-0 text-gold text-lg">🎓</div>
+              <div>
+                <p className="text-navy font-semibold text-sm">{e.degree}</p>
+                <p className="text-gray-500 text-xs">{e.inst} · {e.year}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* The Initiative */}
+      <section className="bg-navy py-16">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="text-gold text-xs font-bold uppercase tracking-widest">The Initiative</span>
+          <h2 className="text-white font-bold text-3xl mt-3 mb-6">Why TreasuryPulse India?</h2>
+          <blockquote className="text-gray-300 text-lg leading-relaxed italic mb-6 max-w-3xl mx-auto">
+            &ldquo;In 20 years across ICICI, Adani, Airtel, Motherson, EY, and McKinsey — I have seen how much
+            knowledge gap exists for junior treasury professionals in India. The information is scattered, the
+            insights are locked inside institutions, and there is no daily go-to resource for someone building
+            their treasury career. TreasuryPulse India is my attempt to change that — one article at a time.
+            This platform is also my research database for a book I am writing on Indian treasury management.&rdquo;
+          </blockquote>
+          <p className="text-gold font-semibold mb-8">— Pranav Chudgar, CFA · Director, Global Treasury · McKinsey & Company</p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link href="/news" className="bg-gold text-navy px-6 py-3 rounded-xl font-bold text-sm hover:bg-amber-400 transition-colors">
+              Read Daily News — Free
+            </Link>
+            <Link href="/subscribe" className="bg-white/10 text-white border border-white/20 px-6 py-3 rounded-xl font-bold text-sm hover:bg-white/20 transition-colors">
+              Get Insider Access — ₹50/month
+            </Link>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }
