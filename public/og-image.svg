@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0A1628"/>
+
+  <!-- Gold accent circles -->
+  <circle cx="0" cy="0" r="300" fill="#F59E0B" opacity="0.05"/>
+  <circle cx="1200" cy="630" r="350" fill="#F59E0B" opacity="0.05"/>
+
+  <!-- Gold left bar -->
+  <rect x="0" y="0" width="8" height="630" fill="#F59E0B"/>
+
+  <!-- Avatar circle -->
+  <circle cx="120" cy="200" r="72" fill="#F59E0B" opacity="0.15"/>
+  <circle cx="120" cy="200" r="72" fill="none" stroke="#F59E0B" stroke-width="3" opacity="0.4"/>
+  <text x="120" y="215" font-family="Georgia, serif" font-size="56" fill="#F59E0B" text-anchor="middle" font-weight="bold">P</text>
+
+  <!-- Name -->
+  <text x="220" y="185" font-family="Georgia, serif" font-size="52" fill="white" font-weight="bold">Pranav Chudgar, CFA</text>
+
+  <!-- Title -->
+  <text x="220" y="230" font-family="-apple-system, Arial, sans-serif" font-size="26" fill="#F59E0B" font-weight="600">Director — Global Treasury · McKinsey &amp; Company</text>
+
+  <!-- Location -->
+  <text x="220" y="268" font-family="-apple-system, Arial, sans-serif" font-size="20" fill="#9CA3AF">Delhi, India  ·  20+ Years  ·  India · Africa · Southeast Asia · Europe</text>
+
+  <!-- Divider -->
+  <rect x="60" y="310" width="1080" height="1" fill="#F59E0B" opacity="0.2"/>
+
+  <!-- Platform name -->
+  <text x="60" y="370" font-family="Georgia, serif" font-size="44" fill="white" font-weight="bold">TreasuryPulse <tspan fill="#F59E0B">India</tspan></text>
+
+  <!-- Description -->
+  <text x="60" y="420" font-family="-apple-system, Arial, sans-serif" font-size="22" fill="#D1D5DB">India's #1 daily treasury intelligence platform for junior finance professionals.</text>
+  <text x="60" y="452" font-family="-apple-system, Arial, sans-serif" font-size="22" fill="#D1D5DB">RBI · SEBI · Forex · G-Sec · Money Markets · Insider Insights</text>
+
+  <!-- Stats row -->
+  <rect x="60" y="500" width="180" height="80" rx="12" fill="#F59E0B" opacity="0.1"/>
+  <text x="150" y="535" font-family="Georgia, serif" font-size="28" fill="#F59E0B" text-anchor="middle" font-weight="bold">€1.7B</text>
+  <text x="150" y="562" font-family="-apple-system, Arial, sans-serif" font-size="14" fill="#9CA3AF" text-anchor="middle">Financing Raised</text>
+
+  <rect x="260" y="500" width="180" height="80" rx="12" fill="#F59E0B" opacity="0.1"/>
+  <text x="350" y="535" font-family="Georgia, serif" font-size="28" fill="#F59E0B" text-anchor="middle" font-weight="bold">$4B</text>
+  <text x="350" y="562" font-family="-apple-system, Arial, sans-serif" font-size="14" fill="#9CA3AF" text-anchor="middle">FX Managed</text>
+
+  <rect x="460" y="500" width="180" height="80" rx="12" fill="#F59E0B" opacity="0.1"/>
+  <text x="550" y="535" font-family="Georgia, serif" font-size="28" fill="#F59E0B" text-anchor="middle" font-weight="bold">1,500+</text>
+  <text x="550" y="562" font-family="-apple-system, Arial, sans-serif" font-size="14" fill="#9CA3AF" text-anchor="middle">Trained</text>
+
+  <rect x="660" y="500" width="180" height="80" rx="12" fill="#F59E0B" opacity="0.1"/>
+  <text x="750" y="535" font-family="Georgia, serif" font-size="28" fill="#F59E0B" text-anchor="middle" font-weight="bold">20+</text>
+  <text x="750" y="562" font-family="-apple-system, Arial, sans-serif" font-size="14" fill="#9CA3AF" text-anchor="middle">Countries</text>
+
+  <!-- CTA badge -->
+  <rect x="900" y="500" width="240" height="80" rx="12" fill="#F59E0B"/>
+  <text x="1020" y="535" font-family="-apple-system, Arial, sans-serif" font-size="20" fill="#0A1628" text-anchor="middle" font-weight="bold">Subscribe Now</text>
+  <text x="1020" y="562" font-family="-apple-system, Arial, sans-serif" font-size="18" fill="#0A1628" text-anchor="middle" font-weight="bold">Only ₹50/month</text>
+</svg>

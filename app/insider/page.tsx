@@ -1,5 +1,18 @@
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Insider Intelligence",
+  description:
+    "Pranav Chudgar's original treasury frameworks, market analysis, and career playbooks — drawn from 20 years at ICICI, Adani, Airtel, Motherson, EY and McKinsey. ₹50/month.",
+  openGraph: {
+    title: "Insider Treasury Intelligence | TreasuryPulse India",
+    description:
+      "🔐 Pranav Chudgar's insider frameworks — how RBI really manages liquidity, G-sec trading playbooks, treasury career roadmaps. 20 years of experience. ₹50/month.",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+  },
+};
 
 async function getInsiderArticles() {
   try {

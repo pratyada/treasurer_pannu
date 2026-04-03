@@ -1,6 +1,19 @@
 import { prisma } from "@/lib/prisma";
 import ArticleCard from "@/components/ArticleCard";
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Daily Treasury News",
+  description:
+    "Daily RBI/SEBI updates, G-sec yields, forex rates, call money rates and money market intelligence — curated every morning by Pranav Chudgar, CFA (McKinsey). Free to read.",
+  openGraph: {
+    title: "Daily Treasury News | TreasuryPulse India",
+    description:
+      "📰 Today's treasury market update — RBI, SEBI, G-sec, forex & money markets. Curated by Pranav Chudgar, CFA · McKinsey. Free access daily.",
+    images: [{ url: "/og-image.png", width: 1200, height: 630 }],
+  },
+};
 
 async function getArticles() {
   try {
