@@ -27,11 +27,6 @@ async function getArticles() {
   }
 }
 
-export const metadata = {
-  title: "Daily Treasury News | TreasuryPulse India",
-  description: "Daily treasury and financial market news for India. RBI updates, G-Sec movements, forex, and more.",
-};
-
 export default async function NewsPage() {
   const articles = await getArticles();
 

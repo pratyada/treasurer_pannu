@@ -26,11 +26,6 @@ async function getInsiderArticles() {
   }
 }
 
-export const metadata = {
-  title: "Insider Intelligence | TreasuryPulse India",
-  description: "Pranav's original treasury insights, analysis, and frameworks. Exclusive to paid subscribers.",
-};
-
 export default async function InsiderPage() {
   const articles = await getInsiderArticles();
 
