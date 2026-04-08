@@ -74,6 +74,9 @@ export default function Footer() {
           <p className="text-gray-600 text-xs">
             For educational purposes only. Not financial advice.
           </p>
+          <p className="text-gray-600 text-xs">
+            v1.2.0
+          </p>
         </div>
       </div>
     </footer>
