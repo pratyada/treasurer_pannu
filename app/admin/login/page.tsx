@@ -1,10 +1,8 @@
 "use client";
 import { useState } from "react";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
 
 export default function AdminLoginPage() {
-  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -21,11 +19,12 @@ export default function AdminLoginPage() {
       redirect: false,
     });
 
-    if (result?.error) {
-      setError("Invalid credentials");
+    if (result?.error || !result?.ok) {
+      setError("Invalid email or password");
       setLoading(false);
     } else {
-      router.push("/admin");
+      // Full reload so the server layout picks up the new session cookie
+      window.location.href = "/admin";
     }
   }
 
