@@ -15,8 +15,8 @@ export const authOptions: NextAuthOptions = {
         if (!credentials?.email || !credentials?.password) return null;
 
         // Admin login (env-based, no DB lookup)
-        const adminEmail = process.env.ADMIN_EMAIL;
-        const adminPassword = process.env.ADMIN_PASSWORD;
+        const adminEmail = process.env.ADMIN_EMAIL?.trim();
+        const adminPassword = process.env.ADMIN_PASSWORD?.trim();
         if (credentials.email === adminEmail && credentials.password === adminPassword) {
           return { id: "admin", email: adminEmail!, name: "Pranav", role: "admin" };
         }
