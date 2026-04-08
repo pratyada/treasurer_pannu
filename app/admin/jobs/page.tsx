@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 
 interface JobPosting {
   id: string;
@@ -8,12 +9,13 @@ interface JobPosting {
   title: string;
   location: string;
   salaryRange: string | null;
-  applyUrl: string;
+  applyUrl: string | null;
   description: string;
   isFeatured: boolean;
   isActive: boolean;
   expiresAt: string;
   createdAt: string;
+  _count: { applications: number };
 }
 
 const emptyForm = {
@@ -34,6 +36,7 @@ export default function AdminJobsPage() {
   const [form, setForm] = useState(emptyForm);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+  const [deletingId, setDeletingId] = useState<string | null>(null);
 
   useEffect(() => {
     fetch("/api/admin/jobs")
@@ -57,7 +60,7 @@ export default function AdminJobsPage() {
       });
       const data = await res.json();
       if (res.ok) {
-        setJobs((prev) => [data.job, ...prev]);
+        setJobs((prev) => [{ ...data.job, _count: { applications: 0 } }, ...prev]);
         setForm(emptyForm);
         setShowForm(false);
       } else {
@@ -79,22 +82,44 @@ export default function AdminJobsPage() {
     }
   };
 
+  const handleDelete = async (id: string) => {
+    if (!confirm("Delete this job posting and all its applications? This cannot be undone.")) return;
+    setDeletingId(id);
+    const res = await fetch(`/api/admin/jobs/${id}`, { method: "DELETE" });
+    if (res.ok) {
+      setJobs((prev) => prev.filter((j) => j.id !== id));
+    }
+    setDeletingId(null);
+  };
+
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold text-navy">Job Postings</h1>
-          <p className="text-gray-500 text-sm mt-1">Manage the treasury jobs board</p>
+          <p className="text-gray-500 text-sm mt-1">Manage treasury job listings and applications</p>
         </div>
-        <button
-          onClick={() => setShowForm(!showForm)}
-          className="bg-navy text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-navy/80 transition-colors flex items-center gap-2"
-        >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-          </svg>
-          Add Job
-        </button>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/jobs"
+            target="_blank"
+            className="text-sm text-gray-500 hover:text-navy transition-colors flex items-center gap-1"
+          >
+            View public board
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </Link>
+          <button
+            onClick={() => setShowForm(!showForm)}
+            className="bg-navy text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-navy/80 transition-colors flex items-center gap-2"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+            </svg>
+            Add Job
+          </button>
+        </div>
       </div>
 
       {/* Add Form */}
@@ -126,9 +151,9 @@ export default function AdminJobsPage() {
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50" />
             </div>
             <div>
-              <label className="block text-xs font-medium text-gray-600 mb-1">Apply URL *</label>
-              <input required value={form.applyUrl} onChange={(e) => setForm((p) => ({ ...p, applyUrl: e.target.value }))}
-                placeholder="https://..."
+              <label className="block text-xs font-medium text-gray-600 mb-1">External Apply URL <span className="font-normal text-gray-400">(optional)</span></label>
+              <input value={form.applyUrl} onChange={(e) => setForm((p) => ({ ...p, applyUrl: e.target.value }))}
+                placeholder="https://... (leave blank to use site form)"
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50" />
             </div>
             <div>
@@ -137,16 +162,16 @@ export default function AdminJobsPage() {
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50" />
             </div>
             <div className="sm:col-span-2">
-              <label className="block text-xs font-medium text-gray-600 mb-1">Description *</label>
+              <label className="block text-xs font-medium text-gray-600 mb-1">Job Description *</label>
               <textarea required value={form.description} onChange={(e) => setForm((p) => ({ ...p, description: e.target.value }))}
-                rows={3} placeholder="Job description..."
+                rows={4} placeholder="Role responsibilities, requirements, what you're looking for..."
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-gold/50 resize-none" />
             </div>
             <div className="sm:col-span-2">
               <label className="flex items-center gap-2 cursor-pointer">
                 <input type="checkbox" checked={form.isFeatured} onChange={(e) => setForm((p) => ({ ...p, isFeatured: e.target.checked }))}
                   className="rounded border-gray-300" />
-                <span className="text-sm text-gray-700">Feature this job (shown first)</span>
+                <span className="text-sm text-gray-700">Feature this job (shown first on the board)</span>
               </label>
             </div>
           </div>
@@ -177,13 +202,16 @@ export default function AdminJobsPage() {
           {jobs.map((job) => (
             <div key={job.id} className={`bg-white border rounded-xl p-5 transition-colors ${job.isActive ? "border-gray-200" : "border-gray-100 opacity-60"}`}>
               <div className="flex items-start justify-between gap-4">
-                <div className="flex-1">
-                  <div className="flex items-center gap-2 mb-1">
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-wrap items-center gap-2 mb-1">
                     {job.isFeatured && (
                       <span className="bg-gold/10 text-amber-700 text-xs font-semibold px-2 py-0.5 rounded-full">Featured</span>
                     )}
                     <span className={`text-xs px-2 py-0.5 rounded-full ${job.isActive ? "bg-green-50 text-green-700" : "bg-gray-100 text-gray-500"}`}>
                       {job.isActive ? "Active" : "Inactive"}
+                    </span>
+                    <span className="text-xs px-2 py-0.5 rounded-full bg-blue-50 text-blue-700">
+                      {job._count?.applications ?? 0} application{(job._count?.applications ?? 0) !== 1 ? "s" : ""}
                     </span>
                   </div>
                   <h3 className="font-semibold text-navy">{job.title}</h3>
@@ -193,17 +221,33 @@ export default function AdminJobsPage() {
                     Expires: {new Date(job.expiresAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
                   </p>
                 </div>
-                <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2 flex-shrink-0">
+                  <Link
+                    href={`/admin/jobs/${job.id}/applications`}
+                    className="text-xs bg-navy text-white hover:bg-navy/80 px-3 py-1.5 rounded-lg transition-colors text-center"
+                  >
+                    Applications ({job._count?.applications ?? 0})
+                  </Link>
                   <button
                     onClick={() => handleToggleActive(job.id, job.isActive)}
                     className="text-xs bg-gray-100 text-gray-600 hover:bg-gray-200 px-3 py-1.5 rounded-lg transition-colors"
                   >
                     {job.isActive ? "Deactivate" : "Activate"}
                   </button>
-                  <a href={job.applyUrl} target="_blank" rel="noopener noreferrer"
-                    className="text-xs text-gold hover:underline text-center">
+                  <Link
+                    href={`/jobs/${job.id}`}
+                    target="_blank"
+                    className="text-xs text-gold hover:underline text-center"
+                  >
                     View →
-                  </a>
+                  </Link>
+                  <button
+                    onClick={() => handleDelete(job.id)}
+                    disabled={deletingId === job.id}
+                    className="text-xs text-red-400 hover:text-red-600 transition-colors disabled:opacity-50"
+                  >
+                    {deletingId === job.id ? "Deleting..." : "Delete"}
+                  </button>
                 </div>
               </div>
             </div>

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import PaywallGate from "@/components/PaywallGate";
+import ShareButton from "@/components/ShareButton";
 import Link from "next/link";
 
 interface PageProps {
@@ -114,16 +115,22 @@ export default async function NewsArticlePage({ params }: PageProps) {
           {article.excerpt}
         </p>
 
-        {/* Tags */}
-        {tags.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-8">
-            {tags.map((tag: string) => (
-              <span key={tag} className="bg-gray-100 text-gray-600 text-xs px-2.5 py-1 rounded-full">
-                #{tag}
-              </span>
-            ))}
-          </div>
-        )}
+        {/* Tags + Share */}
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-8">
+          {tags.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {tags.map((tag: string) => (
+                <span key={tag} className="bg-gray-100 text-gray-600 text-xs px-2.5 py-1 rounded-full">
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          )}
+          <ShareButton
+            url={`${process.env.NEXT_PUBLIC_APP_URL || "https://treasurypulse.in"}/news/${article.slug}`}
+            title={article.title}
+          />
+        </div>
 
         {/* Content or Paywall */}
         {showPaywall ? (
