@@ -52,14 +52,6 @@ export default function Navbar() {
                     Admin Panel
                   </Link>
                 )}
-                {!isAdmin && !isPaid && (
-                  <Link
-                    href="/subscribe"
-                    className="bg-gold text-navy px-4 py-2 rounded-md text-sm font-semibold hover:bg-amber-400 transition-colors"
-                  >
-                    Subscribe — ₹50/mo
-                  </Link>
-                )}
                 {!isAdmin && isPaid && (
                   <span className="text-green-400 text-xs font-medium border border-green-500/30 px-2 py-1 rounded-full">
                     Premium
@@ -79,12 +71,6 @@ export default function Navbar() {
               <>
                 <Link href="/sign-in" className="text-gray-300 hover:text-white text-sm transition-colors">
                   Sign In
-                </Link>
-                <Link
-                  href="/subscribe"
-                  className="bg-gold text-navy px-4 py-2 rounded-md text-sm font-semibold hover:bg-amber-400 transition-colors"
-                >
-                  Subscribe — ₹50/mo
                 </Link>
               </>
             )}
@@ -128,9 +114,6 @@ export default function Navbar() {
               ) : (
                 <>
                   <Link href="/sign-in" className="block text-gray-300 text-sm py-1" onClick={() => setMobileOpen(false)}>Sign In</Link>
-                  <Link href="/subscribe" className="block bg-gold text-navy px-4 py-2 rounded-md text-sm font-semibold text-center" onClick={() => setMobileOpen(false)}>
-                    Subscribe — ₹50/mo
-                  </Link>
                 </>
               )}
             </div>
